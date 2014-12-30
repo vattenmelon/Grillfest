@@ -58,11 +58,11 @@ namespace BlankApp
             await g.Init();
             int batterilevel = await g.GetBatteryLevel();
             System.Diagnostics.Debug.WriteLine("batterilevel: " + batterilevel);
-            List<String> caps =  g.GetCapabilities();
-            System.Diagnostics.Debug.WriteLine("caps: " + String.Join(", ", caps));
-            int haa = await g.GetAppearance();
-            System.Diagnostics.Debug.WriteLine("appearance: " + haa);
-            System.Diagnostics.Debug.WriteLine("devicename: " + await g.GetDeviceName());
+           // List<String> caps =  g.GetCapabilities();
+           // System.Diagnostics.Debug.WriteLine("caps: " + String.Join(", ", caps));
+           // int haa = await g.GetAppearance();
+           // System.Diagnostics.Debug.WriteLine("appearance: " + haa);
+           // System.Diagnostics.Debug.WriteLine("devicename: " + await g.GetDeviceName());
             System.Diagnostics.Debug.WriteLine("genericattbr: " + await g.GetGenericAttribute());
 
         }

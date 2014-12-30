@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Devices.Enumeration;
+using Windows.Foundation;
 using Windows.Storage.Streams;
 
 namespace BlankApp
 {
+
     class Grill
     {
         private const String deviceName = "iGrill_mini";
@@ -24,7 +26,13 @@ namespace BlankApp
             DeviceInformationCollection deviceInformationCollection = await DeviceInformation.FindAllAsync(BluetoothLEDevice.GetDeviceSelector());
             DeviceInformation deviceInformation = deviceInformationCollection.First(x => deviceName.Equals(x.Name));
             bleDevice = await BluetoothLEDevice.FromIdAsync(deviceInformation.Id);
+            bleDevice.ConnectionStatusChanged += bleDevice_ConnectionStatusChanged;
             return true;
+        }
+
+        void bleDevice_ConnectionStatusChanged(BluetoothLEDevice sender, object args)
+        {
+            System.Diagnostics.Debug.WriteLine("connection status changed! " + args);
         }
 
         public List<String> GetCapabilities()
@@ -158,35 +166,42 @@ namespace BlankApp
                    System.Diagnostics.Debug.WriteLine("a: " + a.Uuid);
                }
              */
-            var service = bleDevice.GetGattService(Guid.Parse("64ac0000-4a4b-4b58-9f37-94d3c52ffdf7"));
+            var service = bleDevice.GetGattService(Guid.Parse("63c70000-4a82-4261-95ff-92cf32477861"));
             var caracs = service.GetAllCharacteristics();
+           
             foreach (GattCharacteristic k in caracs)
             {
                 System.Diagnostics.Debug.WriteLine("x: " + k.Uuid + " , " + k.CharacteristicProperties + ", attributehandle: " + k.AttributeHandle);
             }
 
-            Guid id = Guid.Parse("64ac0007-4a4b-4b58-9f37-94d3c52ffdf7");
+            Guid id = Guid.Parse("06ef0003-2e06-4b79-9e33-fce2c42805ec");
             var lol = service.GetCharacteristics(id);
             System.Diagnostics.Debug.WriteLine("--->zcount: " + lol.Count());
             var characteristics = service.GetCharacteristics(id).First();
             try
             {
+                characteristics.ProtectionLevel = GattProtectionLevel.EncryptionAndAuthenticationRequired;
 
-               //GattCommunicationStatus stat = await characteristics.WriteClientCharacteristicConfigurationDescriptorAsync(GattClientCharacteristicConfigurationDescriptorValue.Notify);
+               // GattReadClientCharacteristicConfigurationDescriptorResult stat = await characteristics.ReadClientCharacteristicConfigurationDescriptorAsync();
+                
+                //GattCommunicationStatus stat = await characteristics.WriteClientCharacteristicConfigurationDescriptorAsync(GattClientCharacteristicConfigurationDescriptorValue.Notify);
                //System.Diagnostics.Debug.WriteLine("stass: " + stat);
-                characteristics.ValueChanged += characteristics_ValueChanged;
-                /*
+               // characteristics.ValueChanged += characteristics_ValueChanged;
+                
                 var x = await characteristics.ReadValueAsync(BluetoothCacheMode.Uncached);
                 if (x.Status == GattCommunicationStatus.Success)
                 {
                     byte[] byteArray = new byte[x.Value.Length];
                     DataReader.FromBuffer(x.Value).ReadBytes(byteArray);
                     System.Diagnostics.Debug.WriteLine("string value: " + Encoding.UTF8.GetString(byteArray, 0, byteArray.Length));
-                    System.Diagnostics.Debug.WriteLine("string value: " + BitConverter.ToUInt16(byteArray, 1));
+                    System.Diagnostics.Debug.WriteLine("uint16 value: " + BitConverter.ToUInt16(byteArray, 0));
+                    System.Diagnostics.Debug.WriteLine("uint32 value: " + BitConverter.ToUInt32(byteArray, 0));
+                    System.Diagnostics.Debug.WriteLine("int16 value: " + BitConverter.ToInt16(byteArray, 0));
+                    System.Diagnostics.Debug.WriteLine("int32 value: " + BitConverter.ToInt32(byteArray, 0));
                     System.Diagnostics.Debug.WriteLine("slutt");
                 }
-                        
-   */
+                   
+   
                 return "lol";
             }
             catch (Exception ex)
@@ -206,3 +221,5 @@ namespace BlankApp
 
     }
 }
+
+

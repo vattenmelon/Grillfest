@@ -44,6 +44,7 @@
         <m2:Function Type="name:genericAttribute" />
         <m2:Function Type="serviceId:64ac0000-4a4b-4b58-9f37-94d3c52ffdf7" />
         <m2:Function Type="serviceId:64ac0003-4a4b-4b58-9f37-94d3c52ffdf7" />
+        <m2:Function Type="serviceId:1803"/>
       </m2:Device>
     </m2:DeviceCapability>
     <m2:DeviceCapability Name="bluetooth.rfcomm">
