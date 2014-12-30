@@ -14,11 +14,16 @@
 under: 64ac0000-4a4b-4b58-9f37-94d3c52ffdf7
 x: 64ac0001-4a4b-4b58-9f37-94d3c52ffdf7 , Read value: string: 1.11
 x: 64ac0002-4a4b-4b58-9f37-94d3c52ffdf7 , Write 
-x: 64ac0003-4a4b-4b58-9f37-94d3c52ffdf7 , Read value: error!
+x: 64ac0003-4a4b-4b58-9f37-94d3c52ffdf7 , Read value: error!, funker med autentication og encryption, ukjent value, gir array med 16 0er
 x: 64ac0004-4a4b-4b58-9f37-94d3c52ffdf7 , Write
 x: 64ac0005-4a4b-4b58-9f37-94d3c52ffdf7 , Write
-x: 64ac0006-4a4b-4b58-9f37-94d3c52ffdf7 , Read value: error!
-x: 64ac0007-4a4b-4b58-9f37-94d3c52ffdf7 , Read, Notify value: error!
+x: 64ac0006-4a4b-4b58-9f37-94d3c52ffdf7 , Read value: error!, fortsatt cannot be read
+x: 64ac0007-4a4b-4b58-9f37-94d3c52ffdf7 , Read, Notify value: error!, fortsatt error cannot be read
+
+under: 63c70000-4a82-4261-95ff-92cf32477861
+x: 06ef0001-2e06-4b79-9e33-fce2c42805ec , Read, Write, attributehandle: 49
+x: 06ef0002-2e06-4b79-9e33-fce2c42805ec , Read, Notify, attributehandle: 51 , fortsatt error
+x: 06ef0003-2e06-4b79-9e33-fce2c42805ec , Read, Write, attributehandle: 54
 
 
 
