@@ -1,0 +1,24 @@
+
+
+
+---services på device:
+00001801-0000-1000-8000-00805f9b34fb
+00001800-0000-1000-8000-00805f9b34fb
+64ac0000-4a4b-4b58-9f37-94d3c52ffdf7 --proprietær? 
+63c70000-4a82-4261-95ff-92cf32477861 --proprietær
+0000180f-0000-1000-8000-00805f9b34fb
+
+
+
+
+under: 64ac0000-4a4b-4b58-9f37-94d3c52ffdf7
+x: 64ac0001-4a4b-4b58-9f37-94d3c52ffdf7 , Read value: string: 1.11
+x: 64ac0002-4a4b-4b58-9f37-94d3c52ffdf7 , Write 
+x: 64ac0003-4a4b-4b58-9f37-94d3c52ffdf7 , Read value: error!
+x: 64ac0004-4a4b-4b58-9f37-94d3c52ffdf7 , Write
+x: 64ac0005-4a4b-4b58-9f37-94d3c52ffdf7 , Write
+x: 64ac0006-4a4b-4b58-9f37-94d3c52ffdf7 , Read value: error!
+x: 64ac0007-4a4b-4b58-9f37-94d3c52ffdf7 , Read, Notify value: error!
+
+
+
